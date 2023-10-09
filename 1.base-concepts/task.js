@@ -15,10 +15,15 @@ function solveEquation(a, b, c) {
 		x2 = (-b - Math.sqrt(d)) / (2 * a);
 		arr.push(x1, x2);
 	}
-	
+
   return arr;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  
+  let monthlyRate = percent / 100 / 12;
+	let mainDebt = amount - contribution;
+	let monthlyPayment = mainDebt * (monthlyRate + (monthlyRate / (((1 + monthlyRate) ** countMonths) - 1)));
+	let totalDebtSum = parseFloat((monthlyPayment * countMonths).toFixed(2));
+
+	return totalDebtSum;
 }
